@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "ZHViewTest" #存储库名称
-  s.version      = "0.0.1" #版本号
-  s.summary      = "A short description of ZHViewTest."
+  s.name         = "ZHTest" #存储库名称
+  s.version      = "1.0.1" #版本号
+  s.summary      = "ZHViewTest pod with FZH."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,9 +25,10 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-                   DESC
+                        "yo yo check now upload the framework now"
+                        DESC
 
-  s.homepage     = "http://EXAMPLE/ZHViewTest" #项目主页，不是git地址
+  s.homepage     = "https://github.com/fanzehua498/ZHPodTest" #项目主页，不是git地址
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,8 +39,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = "Copyright (c) 2019年 范泽华. All rights reserved."
+  # s.license      = { :type => "MIT", :file => "LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -63,8 +64,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
-  # s.platform     = :ios, "9.0"
+   s.platform     = :ios
+  # s.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/ZHViewTest.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/fanzehua498/ZHPodTest.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,8 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+#s.source_files  = "Classes", "Classes/**/*.{h,m}"
+# s.source_files  = "ZHPodTest/"
+  s.source_files = "Class/*.{h,m}"
+ s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 

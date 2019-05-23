@@ -7,7 +7,7 @@
 //
 
 #import "CircleSelectButtonView.h"
-#import "specialShapeView.h"
+
 @interface CircleSelectButtonView ()
 
 @property (nonatomic,strong) UIBezierPath *path1;
@@ -41,20 +41,20 @@
 - (void)createCircle
 {
     CGFloat raduis = self.frame.size.width / 2;
-    [self addSubCircleLayer:CGPointMake(self.frame.size.width / 2, 0) linePoint:CGPointMake(raduis, raduis/2)  linePoint2:CGPointMake(raduis - raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) startAngle:1.5 * M_PI endAngle:M_PI / 10 + M_PI Color:[UIColor blueColor] path:1];
+    [self addSubCircleLayer:CGPointMake(self.frame.size.width / 2, 0) linePoint:CGPointMake(raduis, raduis/2)  linePoint2:CGPointMake(raduis - raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) startAngle:1.5 * M_PI endAngle:M_PI / 10 + M_PI Color:[UIColor blueColor] path:@"一"];
 
-    [self addSubCircleLayer:CGPointMake(raduis - raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) linePoint:CGPointMake(raduis - raduis*cos(M_PI / 10)/2, raduis - raduis*sin(M_PI / 10)/2) linePoint2:CGPointMake(raduis - raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) startAngle:M_PI / 10 + M_PI endAngle: 7*M_PI/10 Color:[UIColor grayColor] path:2];
+    [self addSubCircleLayer:CGPointMake(raduis - raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) linePoint:CGPointMake(raduis - raduis*cos(M_PI / 10)/2, raduis - raduis*sin(M_PI / 10)/2) linePoint2:CGPointMake(raduis - raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) startAngle:M_PI / 10 + M_PI endAngle: 7*M_PI/10 Color:[UIColor grayColor] path:@"二"];
     
-    [self addSubCircleLayer:CGPointMake(raduis - raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) linePoint:CGPointMake(raduis - raduis * cos(3*M_PI/10)/2, raduis + raduis* sin(3*M_PI/10)/2) linePoint2:CGPointMake(raduis + raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) startAngle:7*M_PI/10 endAngle:3*M_PI/10 Color:[UIColor greenColor] path:3];
+    [self addSubCircleLayer:CGPointMake(raduis - raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) linePoint:CGPointMake(raduis - raduis * cos(3*M_PI/10)/2, raduis + raduis* sin(3*M_PI/10)/2) linePoint2:CGPointMake(raduis + raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) startAngle:7*M_PI/10 endAngle:3*M_PI/10 Color:[UIColor greenColor] path:@"三"];
     
-    [self addSubCircleLayer:CGPointMake(raduis + raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) linePoint:CGPointMake(raduis + raduis * cos(3*M_PI/10)/2, raduis + raduis* sin(3*M_PI/10)/2) linePoint2:CGPointMake(raduis + raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) startAngle:3*M_PI/10 endAngle:-M_PI/10 Color:[UIColor cyanColor] path:4];
+    [self addSubCircleLayer:CGPointMake(raduis + raduis * cos(3*M_PI/10), raduis + raduis* sin(3*M_PI/10)) linePoint:CGPointMake(raduis + raduis * cos(3*M_PI/10)/2, raduis + raduis* sin(3*M_PI/10)/2) linePoint2:CGPointMake(raduis + raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) startAngle:3*M_PI/10 endAngle:-M_PI/10 Color:[UIColor cyanColor] path:@"四"];
     
-    [self addSubCircleLayer:CGPointMake(raduis + raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) linePoint:CGPointMake(raduis + raduis*cos(M_PI / 10)/2, raduis - raduis*sin(M_PI / 10)/2) linePoint2:CGPointMake(self.frame.size.width / 2, 0) startAngle:-M_PI/10 endAngle:1.5 * M_PI Color:[UIColor orangeColor] path:5];
+    [self addSubCircleLayer:CGPointMake(raduis + raduis*cos(M_PI / 10), raduis - raduis*sin(M_PI / 10)) linePoint:CGPointMake(raduis + raduis*cos(M_PI / 10)/2, raduis - raduis*sin(M_PI / 10)/2) linePoint2:CGPointMake(self.frame.size.width / 2, 0) startAngle:-M_PI/10 endAngle:1.5 * M_PI Color:[UIColor orangeColor] path:@"五"];
     
     
 }
 
-- (void)addSubCircleLayer:(CGPoint )startPoint linePoint:(CGPoint)linePoint linePoint2:(CGPoint)linePoint2 startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle Color:(UIColor *)fillColor path:(NSInteger)pathNum
+- (void)addSubCircleLayer:(CGPoint )startPoint linePoint:(CGPoint)linePoint linePoint2:(CGPoint)linePoint2 startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle Color:(UIColor *)fillColor path:(NSString *)pathNum
 {
     CGFloat raduis = self.frame.size.width / 2;
     
@@ -86,27 +86,19 @@
 //    self.path = path;
     UILabel *label = [[UILabel alloc] initWithFrame:path.bounds];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"模块 %ld",pathNum];
+    label.text = [NSString stringWithFormat:@"模块 %@",pathNum];
     [self addSubview:label];
-    switch (pathNum) {
-        case 1:
-            self.path1 = path;
-            break;
-        case 2:
-            self.path2 = path;
-            break;
-        case 3:
-            self.path3 = path;
-            break;
-        case 4:
-            self.path4 = path;
-            break;
-        case 5:
-            self.path5 = path;
-            break;
-            
-        default:
-            break;
+    
+    if ([pathNum isEqualToString:@"一"]) {
+        self.path1 = path;
+    }else if ([pathNum isEqualToString:@"二"]){
+        self.path2 = path;
+    }else if ([pathNum isEqualToString:@"三"]){
+        self.path3 = path;
+    }else if ([pathNum isEqualToString:@"四"]){
+        self.path4 = path;
+    }else if ([pathNum isEqualToString:@"五"]){
+        self.path5 = path;
     }
 }
 
@@ -163,8 +155,7 @@
         NSLog(@"commands:%@",self.keyCommands);
         
     }
-    
-//    NSLog(@"%d",[specialShapeView in_circular_sector:CGPointMake(self.frame.size.width / 2, self.frame.size.width / 2 + self.frame.size.width / 4) direction:CGPointMake(0, 0) r:self.frame.size.width / 2 angle:2/5*360 point:point]);
+
     
 
     
